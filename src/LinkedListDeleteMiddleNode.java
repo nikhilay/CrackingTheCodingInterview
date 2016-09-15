@@ -14,5 +14,5 @@ public class LinkedListDeleteMiddleNode {
         node.next = node.next.next;
         return true;
     }
-    
+
 }
