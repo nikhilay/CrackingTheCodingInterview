@@ -83,9 +83,9 @@ public class LinkedListSumList {
         Result pointer = forwardNumberRecursion(list1.next, list2.next);
         int carry = pointer.carry + list1.copiesSold + list2.copiesSold;
         pointer.carry = carry / 10;
-        pointer.node.copiesSold = carry % 10;
-        pointer.node.bookName = "test";
-        pointer.node.next = pointer.node;
+        Link currentNode = new Link("test", carry % 10);
+        currentNode.next = pointer.node;
+        pointer.node = currentNode;
         return pointer;
 
     }
