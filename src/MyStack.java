@@ -1,7 +1,9 @@
+import java.util.Stack;
+
 /**
  * Created by Nikhil on 9/18/16.
  */
-public class Stack<T> {
+public class MyStack<T> {
     private class StackNode<T> {
         private T data;
         StackNode next;
@@ -14,7 +16,7 @@ public class Stack<T> {
     private StackNode top;
 
     public static void main(String[] args) {
-        Stack stacks = new Stack();
+        MyStack stacks = new MyStack();
         stacks.push("Nikhil");
         stacks.push(2232);
         stacks.push(34.555);
@@ -51,7 +53,7 @@ public class Stack<T> {
     }
 
     public void displayAll() {
-        Stack temp = new Stack();
+        MyStack temp = new MyStack();
 
         while (top != null) {
             T tempData = pop();
