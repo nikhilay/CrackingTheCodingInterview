@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Nikhil on 9/18/16.
@@ -20,8 +17,12 @@ public class StacksAndQueueStackofPlates<T> {
         stackOfPlates.pop();
         stackOfPlates.pop();
         stackOfPlates.pop();
+        LinkedList input =new LinkedList();
+        input.removeFirst();
+
 
     }
+
 
     public void push(T data) {
         if (stacks.isEmpty()) {
