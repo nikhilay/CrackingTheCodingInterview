@@ -175,9 +175,7 @@ public class MyBinaryTree {
                 System.out.println("Node has been removed");
             }
         } else {
-            Node temp = getReplacedNode(focusNode.leftChild);
-            temp.leftChild = focusNode.leftChild;
-            temp.rightChild = focusNode.rightChild;
+            Node temp = getReplacedNode(focusNode);
             if (focusNode == root) {
                 root = temp;
                 System.out.println("Node has been removed");
@@ -189,16 +187,26 @@ public class MyBinaryTree {
                 parent.rightChild = temp;
                 System.out.println("Node has been removed");
             }
+
+            temp.leftChild = focusNode.leftChild;
         }
     }
 
 
     public Node getReplacedNode(Node focusNode) {
-        Node parent = focusNode;
-        while (focusNode != null) {
-            parent = focusNode;
-            focusNode = focusNode.rightChild;
+        Node replaceParent = focusNode;
+        Node replaceChild = focusNode;
+
+        Node temp = focusNode.rightChild;
+        while (temp != null) {
+            replaceParent = replaceChild;
+            replaceChild = temp;
+            temp = temp.leftChild;
         }
-        return parent;
+        if(focusNode.rightChild!=replaceChild){
+            replaceParent.leftChild =replaceChild.rightChild;
+            replaceChild.rightChild = focusNode.rightChild;
+        }
+        return replaceChild;
     }
 }
