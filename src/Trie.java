@@ -25,7 +25,13 @@ public class Trie {
 
     public static void main(String[] args) {
 
-
+        Trie obj = new Trie();
+        obj.insertIntoTrie("actor");
+        obj.insertIntoTrie("abcd");
+        obj.insertIntoTrie("ball");
+        obj.searchInTrie("ball");
+        obj.deleteFromTrie("ball");
+        obj.searchInTrie("ball");
     }
 
     public void insertIntoTrie(String s) {
@@ -36,18 +42,24 @@ public class Trie {
         TrieNode current = root;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            TrieNode node = root.children.get(c);
+            TrieNode node = current.children.get(c);
             if (node == null) {
-                TrieNode newNode = new TrieNode();
-                root.children.put(c, newNode);
+                node = new TrieNode();
+                current.children.put(c, node);
             }
-            current = node;
+            current = node ;
         }
         current.endOfWord = true;
+        System.out.println(s + " has been successfully inserted in Trie");
     }
 
-    public boolean searchInTrie(String s) {
-        return searchRecursive(root, s, 0);
+    public void searchInTrie(String s) {
+        boolean searchResult = searchRecursive(root, s, 0);
+        if (searchResult) {
+            System.out.println(s + " has been found and exist in Trie");
+        } else {
+            System.out.println(s + " does not exist in Trie");
+        }
 
     }
 
@@ -57,19 +69,22 @@ public class Trie {
         }
         char c = s.charAt(index);
         TrieNode node = current.children.get(c);
-        if (!node.children.containsKey(c)) {
+        if (node==null) {
             return false;
         }
         return searchRecursive(node, s, index + 1);
     }
 
-    public boolean deleteFromTrie(String s) {
-        return deleteRecursive(root, s, 0);
+    public void deleteFromTrie(String s) {
+        boolean status = deleteRecursive(root, s, 0);
+        System.out.println(s + " has been successfully deleted from Trie");
+
     }
 
     public boolean deleteRecursive(TrieNode current, String s, int index) {
         if (index == s.length()) {
             if (!current.endOfWord) {
+                System.out.println("Incorrect Word");
                 return false;
             }
             current.endOfWord = false;
