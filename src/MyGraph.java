@@ -50,8 +50,8 @@ public class MyGraph {
 
         //To Read relation between different vertices (Edges)
         while (sc.hasNextLine()) {
-            String startAndEndVertex =sc.nextLine().toString();
-            if(startAndEndVertex.equals("")){
+            String startAndEndVertex = sc.nextLine().toString();
+            if (startAndEndVertex.equals("")) {
                 continue;
             }
             System.out.println(startAndEndVertex);
@@ -83,7 +83,8 @@ public class MyGraph {
         System.out.print("Enter graph input file name: ");
         String file = sc.nextLine();
         MyGraph graph = new MyGraph(file);
-        graph.print();
+        graph.dfs();
+
 
     }
 
@@ -103,8 +104,8 @@ public class MyGraph {
         } else {
             for (int i = 0; i < adjacencyList.length; i++) {
                 System.out.print(adjacencyList[i].vertex_name + " ");
-                Neighbour iterator =adjacencyList[i].next;
-                while ( iterator!= null) {
+                Neighbour iterator = adjacencyList[i].next;
+                while (iterator != null) {
                     System.out.print(" ----> " + adjacencyList[iterator.vertex_number].vertex_name);
                     iterator = iterator.next;
                 }
@@ -113,5 +114,26 @@ public class MyGraph {
         }
     }
 
+    public void dfs() {
+        boolean[] visited = new boolean[adjacencyList.length];
+        System.out.println("Starting at " + adjacencyList[0].vertex_name);
+        for (int i = 0; i < visited.length; i++) {
+            if (!visited[i]) {
+                dfsRecursive(i, visited);
+            }
+        }
+    }
+
+    private void dfsRecursive(int vertex, boolean[] visited) {
+        visited[vertex] = true;
+        System.out.println("Visting " + adjacencyList[vertex].vertex_name);
+        for (Neighbour nbr = adjacencyList[vertex].next; nbr != null; nbr = nbr.next) {
+            if (!visited[nbr.vertex_number]) {
+                dfsRecursive(nbr.vertex_number, visited);
+            }
+        }
+
+
+    }
 
 }
