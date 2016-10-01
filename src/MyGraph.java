@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Nikhil on 9/28/16.
@@ -83,6 +83,7 @@ public class MyGraph {
         System.out.print("Enter graph input file name: ");
         String file = sc.nextLine();
         MyGraph graph = new MyGraph(file);
+        graph.bfs();
         graph.dfs();
 
 
@@ -135,5 +136,34 @@ public class MyGraph {
 
 
     }
+
+    public void bfs() {
+        boolean[] visited = new boolean[adjacencyList.length];
+        Queue<Integer> queue = new LinkedList<Integer>();
+        int start = 0;
+
+        for (int i = 0; i < visited.length; i++) {
+            if (!visited[i]) {
+                bfsRecursive(start, visited, queue);
+            }
+        }
+    }
+
+    private void bfsRecursive(int start, boolean[] visited, Queue<Integer> queue) {
+        visited[start] = true;
+        System.out.println("Visiting node " + adjacencyList[start].vertex_name);
+        queue.add(start);
+        while (!queue.isEmpty()) {
+            int v = queue.poll();
+            for (Neighbour nbr = adjacencyList[v].next; nbr != null; nbr = nbr.next) {
+                if (!visited[nbr.vertex_number]) {
+                    visited[nbr.vertex_number] = true;
+                    System.out.println("Visiting node " + adjacencyList[nbr.vertex_number].vertex_name);
+                    queue.add(nbr.vertex_number);
+                }
+            }
+        }
+    }
+
 
 }
