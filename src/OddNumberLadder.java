@@ -8,7 +8,7 @@ public class OddNumberLadder {
         new OddNumberLadder().createLadder(10);
     }
 
-    // Displaying the useage of continue with label statement
+    // Displaying the usage of continue with label statement
     public void generateLadder(int input) {
         outerLabel:
         for (int x = 1; x > 0; x++) {
