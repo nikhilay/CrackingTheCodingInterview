@@ -10,7 +10,7 @@ public class GraphsRouteBetweenTwoNodes {
     public static void main(String[] args) throws FileNotFoundException {
         MyGraph graph = new MyGraph("dfs.txt");
         GraphsRouteBetweenTwoNodes obj = new GraphsRouteBetweenTwoNodes();
-        System.out.println(obj.checkifRouteExist("A", "D", graph));
+        obj.checkifRouteExist("A", "C", graph);
     }
 
 
@@ -42,8 +42,10 @@ public class GraphsRouteBetweenTwoNodes {
         }
         if (bfs(vertex1Number, graph, vertex2) || bfs(vertex2Number, graph, vertex1)) {
             return true;
+        }else {
+            System.out.println("Route does not exist");
+            return false;
         }
-        return false;
 
 
     }

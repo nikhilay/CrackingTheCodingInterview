@@ -2,8 +2,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import static javafx.scene.input.KeyCode.Q;
-import static javafx.scene.input.KeyCode.W;
 
 /**
  * Created by Nikhil on 9/29/16.
@@ -27,6 +25,15 @@ public class test {
         System.out.println(q.poll());
         System.out.println(q.poll());
         System.out.println(q.poll());
+        LinkedList<Integer> ll = new LinkedList<Integer>();
+        ll.add(1);
+        ll.add(2);
+        ll.add(3);
+        System.out.println(ll.poll());
+        System.out.println(ll.poll());
+        System.out.println(ll.poll());
+        System.out.println(ll.poll());
+
 
         }
     }
