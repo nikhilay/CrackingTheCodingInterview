@@ -2,7 +2,7 @@
  * Created by Nikhil on 10/2/16.
  */
 public class TreesSuccessor {
-    
+
     public void  inOrderSuccessor(MyBinaryTree.Node focusNode){
         if (focusNode == null) return;
         if(focusNode.rightChild==null){
