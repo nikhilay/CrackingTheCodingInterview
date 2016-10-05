@@ -6,7 +6,7 @@ public class TreeCheckSubTree {
     StringBuilder st2 = new StringBuilder();
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         TreeCheckSubTree obj = new TreeCheckSubTree();
         MyBinaryTree tree1 = new MyBinaryTree();
         tree1.addNode(4);
@@ -21,8 +21,10 @@ public class TreeCheckSubTree {
         tree2.addNode(5);
         tree2.addNode(8);
         obj.checkSubTree(tree1.root, tree2.root);
+        System.out.print(obj.containsTree(tree1.root, tree2.root));
     }
 
+    //With MEMORY
     public void checkSubTree(MyBinaryTree.Node tree1, MyBinaryTree.Node tree2) {
 
         if (tree1 == null && tree2 == null) {
@@ -42,7 +44,7 @@ public class TreeCheckSubTree {
         }
     }
 
-    private void preOrderTraversal(MyBinaryTree.Node focusNode,StringBuilder st) {
+    private void preOrderTraversal(MyBinaryTree.Node focusNode, StringBuilder st) {
         if (focusNode == null) {
             st.append("X");
             return;
@@ -52,4 +54,34 @@ public class TreeCheckSubTree {
         preOrderTraversal(focusNode.rightChild, st);
 
     }
+    //WITH LESS MEMORY
+
+    public boolean containsTree(MyBinaryTree.Node tree1, MyBinaryTree.Node tree2) {
+        if (tree2 == null) return true;
+        return subtree(tree1, tree2);
+
+    }
+
+    private boolean subtree(MyBinaryTree.Node tree1, MyBinaryTree.Node tree2) {
+        if (tree1 == null) {
+            return false;
+        } else if (tree1.nodeValue == tree2.nodeValue && matchTree(tree1, tree2)) {
+            return true;
+        }
+        return subtree(tree1.leftChild, tree2) || subtree(tree1.rightChild, tree2);
+    }
+
+    private boolean matchTree(MyBinaryTree.Node tree1, MyBinaryTree.Node tree2) {
+        if (tree1 == null && tree2 == null) {
+            return true;
+        } else if (tree1 == null || tree2 == null) {
+            return false;
+        } else if (tree1.nodeValue != tree2.nodeValue) {
+            return false;
+
+        } else {
+            return matchTree(tree1.leftChild, tree2.leftChild) && matchTree(tree1.rightChild, tree2.rightChild);
+        }
+    }
 }
+
