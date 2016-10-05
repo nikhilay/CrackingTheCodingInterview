@@ -10,6 +10,7 @@ public class MyBinaryTree {
         Node leftChild;
         Node rightChild;
         Node parent;
+        int size;
 
         Node(int nodeValue) {
             this.nodeValue = nodeValue;
