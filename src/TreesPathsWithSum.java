@@ -5,6 +5,18 @@ import java.util.HashMap;
  */
 public class TreesPathsWithSum {
 
+    public static void main(String[] args) {
+        TreesPathsWithSum obj = new TreesPathsWithSum();
+        MyBinaryTree input = new MyBinaryTree();
+        input.addNode(9);
+        input.addNode(10);
+        input.addNode(11);
+        input.addNode(8);
+        input.addNode(7);
+        input.addNode(6);
+        System.out.println("Total number of paths is "+obj.countPath(input.root, 30));
+    }
+
     public int countPath(MyBinaryTree.Node root, int targetSum) {
         if (root == null) {
             System.out.print("Tree is empty");
