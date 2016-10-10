@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class SortingPeaksAndValleys {
     public static void main(String[] args) {
-        int[] input = {3, 0, 1, 4, 2,2gi};
+        int[] input = {3, 0, 1, 4, 2,2};
         new SortingPeaksAndValleys().sortForPeaksAndValleys(input);
         new SortingPeaksAndValleys().efficientSortingForPeakAndValley(input);
     }

@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -8,33 +10,14 @@ import java.util.Scanner;
  */
 public class test {
 
-    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        while (sc.hasNext()) {
-//            String[] st = sc.nextLine().toString().split("\\s+");
-//            if(st.length==1){
-//                System.out.println("Please mention both the vertices f");
-//                return;
-//            }
-//            System.out.println(st[0]);
-        Queue<Integer> q = new LinkedList<Integer>();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        System.out.println(q.poll());
-        System.out.println(q.poll());
-        System.out.println(q.poll());
-        System.out.println(q.poll());
-        LinkedList<Integer> ll = new LinkedList<Integer>();
-        ll.add(1);
-        ll.add(2);
-        ll.add(3);
-        System.out.println(ll.poll());
-        System.out.println(ll.poll());
-        System.out.println(ll.poll());
-        System.out.println(ll.poll());
-
-
+    public static void main(String[] args) throws FileNotFoundException {
+        StringBuilder sb = new StringBuilder();
+        String file = "friendship.txt";
+        Scanner sc = new Scanner(new File(file));
+        while (sc.hasNextLine()) {
+            sb.append(sc.nextLine().toString() + ", ");
         }
+System.out.print(sb.toString());
     }
+}
 
