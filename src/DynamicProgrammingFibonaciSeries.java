@@ -21,7 +21,7 @@ public class DynamicProgrammingFibonaciSeries {
 
         return normalFibonacciSeries(input - 1) + normalFibonacciSeries(input - 2);
     }
-    //bottom up approach O(n) time complexity
+    //bottom up approach O(n) time complexity and O(n) space
 
     public int bottomUpFibonacciSeries(int x) {
         int[] result = new int[x + 1];
