@@ -14,7 +14,6 @@ public class DPRobotInGrid {
             this.column = column;
         }
     }
-    D
     public ArrayList<Point> findPath(boolean[][] maze) {
         if (maze == null || maze.length == 0) return null;
         ArrayList<Point> path = new ArrayList<Point>();
