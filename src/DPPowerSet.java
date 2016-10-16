@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Created by Nikhil on 10/12/16.
  */
 public class DPPowerSet {
-    
+
     public ArrayList<ArrayList<Integer>> givePowerSet(ArrayList<Integer> set, int index) {
         ArrayList<ArrayList<Integer>> allSubsets;
         if (set.size() == index) {

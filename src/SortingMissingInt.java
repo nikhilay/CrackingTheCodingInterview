@@ -8,7 +8,7 @@ import static javafx.scene.input.KeyCode.F;
 public class SortingMissingInt {
 
     public void findMissingInt() throws IOException {
-        byte[] bitfield = new byte[(int) (Integer.MAX_VALUE / 8) + 1];
+        byte[] bitfield = new byte[(int) ((Integer.MAX_VALUE+ 1) / 8) ];
         File f = new File("test1.txt");
         BufferedReader br = new BufferedReader(new FileReader(f));
         String line = null;
